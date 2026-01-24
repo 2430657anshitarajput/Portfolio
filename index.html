@@ -196,28 +196,169 @@ body.light .contact a{
 body.light .contact a:hover{
   color:#000;
 }
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Behind everything */
+    pointer-events: none; /* Doesn't interfere with clicks */
+}
+.skill-card, .project {
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.skill-card:hover, .project:hover {
+    transform: rotateY(10deg) rotateX(5deg) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 255, 213, 0.3);
+}
+/* For nav buttons, add subtle 3D on hover */
+nav button:hover {
+    transform: translateY(-2px) scale(1.02);
+}
+/* Glowing animation for skill cards */
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 10px #00ffd5; }
+    50% { box-shadow: 0 0 20px #00ffd5, 0 0 30px #00ffd5; }
+}
+.skill-card {
+    animation: glow 2s infinite alternate;
+}
+/* Glowing on hover for projects */
+.project:hover {
+    box-shadow: 0 0 20px #00ffd5, 0 0 40px #00ffd5;
+}
+/* Glowing for mode button */
+.mode-btn {
+    box-shadow: 0 0 10px #00ffd5;
+    animation: glow 3s infinite alternate;
+}
+/* Glowing for contact icons */
+.contact a:hover i {
+    text-shadow: 0 0 10px #00ffd5;
+}
+body.light .skill-card, body.light .project, body.light .mode-btn {
+    animation: none; /* Disable glow in light mode for subtlety */
+}
+/* ===== ABOUT SECTION ENHANCEMENTS ===== */
+.about-content {
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.about-content:hover {
+    transform: rotateY(5deg) rotateX(2deg);
+    box-shadow: 0 15px 30px rgba(0, 255, 213, 0.2);
+}
+
+/* Typing Animation */
+.typing {
+    border-right: 2px solid #00ffd5;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #00ffd5; }
+}
+
+/* Fade-In Animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards;
+}
+.fade-in:nth-child(2) { animation-delay: 2s; } /* Delay for second paragraph */
+.fade-in:nth-child(3) { animation-delay: 4s; } /* Delay for third paragraph */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Glowing Text on Hover */
+.about-content p:hover {
+    text-shadow: 0 0 10px #00ffd5, 0 0 20px #00ffd5;
+    transition: text-shadow 0.3s ease;
+}
+.about-content strong:hover {
+    color: #00ffd5;
+    text-shadow: 0 0 15px #00ffd5;
+}
+
+/* Icon Styling */
+.about-content i {
+    color: #00ffd5;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+.about-content p:hover i {
+    transform: scale(1.2);
+}
+
+/* Light Mode Adjustments */
+body.light .about-content p:hover {
+    text-shadow: 0 0 10px #00796b;
+}
+body.light .about-content strong:hover {
+    color: #00796b;
+    text-shadow: 0 0 15px #00796b;
+}
+body.light .about-content i {
+    color: #00796b;
+}
+/* Hero Animations */
+.hero-img {
+    animation: fadeIn 1s ease-in-out;
+}
+.hero-text:nth-child(2) { animation: slideInLeft 1s ease-out 0.5s both; } /* Name */
+.hero-text:nth-child(3) { animation: slideInRight 1s ease-out 1s both; } /* Title */
+.hero-text:nth-child(4) { animation: fadeInUp 1s ease-out 1.5s both; } /* Description */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideInLeft { from { transform: translateX(-100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes fadeInUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+#contact-form { max-width: 500px; margin: 0 auto 20px; }
+#contact-form input, #contact-form textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #00ffd5; border-radius: 5px; background: rgba(0,0,0,0.4); color: #fff; }
+#contact-form button { padding: 10px 20px; background: #00ffd5; border: none; border-radius: 5px; color: #000; cursor: pointer; transition: 0.3s; }
+#contact-form button:hover { background: #00b8a9; }
+.resume-btn { display: inline-block; margin-top: 20px; padding: 12px 20px; background: #00ffd5; color: #000; text-decoration: none; border-radius: 5px; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 10px rgba(0, 255, 213, 0.3); }
+.resume-btn:hover { background: #00b8a9; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0, 255, 213, 0.5); }
+/* Add to your <style> */
+@media (max-width: 768px) {
+    #particles-js { display: none; } /* Hide particles on mobile */
+    .skill-card, .project { animation: none; } /* Disable glow animations */
+    .hero-text { animation: fadeIn 1s ease; } /* Simplify hero animations */
+}
 
   </style>
   
 </head>
 <body>
+
+  <div id="particles-js"></div>
 <!-- ===== MODE TOGGLE BUTTON ===== -->
 <button class="mode-btn" onclick="toggleTheme()">
   <i class="fa-solid fa-moon"></i>
 </button>
 
-
 <header>
-  <img src="anshita.jpeg" alt="Anshita Rajput">
-  <h1>Anshita Rajput</h1>
-  <h3>2nd Year BCA Student | PSIT Kanpur</h3>
-  <p>Passionate about programming and technology. Skilled in C, C++, Python, Web Development, and Data Structures. Enthusiastic learner building efficient projects.</p>
+  <img src="anshita.jpeg" alt="Anshita Rajput" class="hero-img">
+  <h1 class="hero-text">Anshita Rajput</h1>
+  <h3 class="hero-text">2nd Year BCA Student | PSIT Kanpur</h3>
+  <p class="hero-text">Passionate about programming and technology. Skilled in C, C++, Python, Web Development, and Data Structures. Enthusiastic learner building efficient projects.</p>
+  <a href="path/to/your-resume.pdf" download class="resume-btn">Download Resume <i class="fa-solid fa-download"></i></a><br><br><br>
   <!-- Scroll Indicator -->
-<div class="scroll-indicator">
-  <i class="fa-solid fa-angle-down"></i>
-  <span>Scroll down</span>
-</div>
-
+  <div class="scroll-indicator">
+    <i class="fa-solid fa-angle-down"></i>
+    <span>Scroll down</span>
+  </div>
 </header>
 
 <nav>
@@ -232,25 +373,20 @@ body.light .contact a:hover{
 <section id="about">
   <h2>About Me</h2>
   <div class="about-content">
-    <p>
-      Hello! I’m <strong>Anshita Rajput</strong>, a 2nd year BCA student at PSIT Kanpur.
-      I am passionate about programming, problem-solving, and creating interactive
-      web applications.
+    <p class="typing">
+      <i class="fa-solid fa-hand-wave"></i> Hello! I’m <strong>Anshita Rajput</strong>, a 2nd year BCA student at PSIT Kanpur.
+      I am passionate about programming, problem-solving, and creating interactive web applications.
     </p>
-
-    <p>
-      I have hands-on experience in <strong>C, C++, Python, HTML, CSS</strong> and
-      <strong>Data Structures</strong>. I enjoy building projects that improve my
-      logical thinking and practical skills.
+    <p class="fade-in">
+      <i class="fa-solid fa-code"></i> I have hands-on experience in <strong>C, C++, Python, HTML, CSS</strong> and
+      <strong>Data Structures</strong>. I enjoy building projects that improve my logical thinking and practical skills.
     </p>
-
-    <p>
-      Currently, I am focusing on strengthening my core programming concepts and
+    <p class="fade-in">
+      <i class="fa-solid fa-lightbulb"></i> Currently, I am focusing on strengthening my core programming concepts and
       expanding my knowledge in web development and software design.
     </p>
   </div>
 </section>
-
 <section id="skills" class="active">
   <h2>Skills</h2>
   <div class="skills">
@@ -331,16 +467,20 @@ body.light .contact a:hover{
 
 <section id="contact">
   <h2>Contact Me</h2>
+  <form id="contact-form" action=https://formspree.io/f/mnjplblz method="POST"> <!-- Replace with your Formspree ID -->
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
   <div class="contact">
-    <a href="https://github.com/2430657anshitarajput" target="_blank" title="GitHub">
-  <i class="fa-brands fa-github"></i>
-</a>
-
+    <a href="https://github.com/2430657anshitarajput" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
     <a href="mailto:anshitarajput123@gmail.com" title="Email Me"><i class="fa-solid fa-envelope"></i></a>
     <a href="https://www.linkedin.com/in/anshita-rajput/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
     <a href="https://wa.me/917266836224" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
   </div>
 </section>
+
 
 <footer>© 2025 Anshita Rajput | Designed with ❤</footer>
 
@@ -380,8 +520,41 @@ function showSection(id){
   document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
+particlesJS("particles-js", {
+    "particles": {
+        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#00ffd5" }, // Matches your theme
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5, "random": true },
+        "size": { "value": 3, "random": true },
+        "line_linked": { "enable": false },
+        "move": { "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
+    },
+    "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": false } } },
+    "retina_detect": true
+});
+// ===== About Section Scroll Animations =====
+const aboutObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.fade-in').forEach(p => aboutObserver.observe(p));
+
+// ===== Extra Glow on Click (for interactivity) =====
+document.querySelectorAll('.about-content p').forEach(p => {
+    p.addEventListener('click', () => {
+        p.style.textShadow = '0 0 20px #00ffd5, 0 0 40px #00ffd5';
+        setTimeout(() => p.style.textShadow = '', 1000); // Reset after 1s
+    });
+});
+
 
 </script>
 
 </body>
 </html>
+ 
