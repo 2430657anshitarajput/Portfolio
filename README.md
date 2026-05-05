@@ -6,10 +6,10 @@ Welcome to my personal portfolio! This website showcases my skills, projects, ce
 
 ## 🌟 Features
 
-- **Skills Section:** C, C++, Python, HTML, CSS, Data Structures  
-- **Projects Section:** Python Projects, Web Development Projects, Mood Tracker  
+- **Skills Section:** C, C++, Python, HTML, CSS, Javascript, Data Structures, SQL 
+- **Projects Section:** Python Projects, Web Development Projects, Mood Tracker, DSA Visualizer  
 - **Certifications Section:** Display of earned certifications  
-- **Contact Section:** Email, LinkedIn, WhatsApp links  
+- **Contact Section:** Email, LinkedIn, WhatsApp link, Github link  
 - Fully responsive design with smooth navigation  
 
 ---
